@@ -19,9 +19,9 @@ from secret import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('secret/', views.index),
+    path('secret/', views.home),
     path('login/', views.login),
-    path('',views.home)
+    path('',views.index)
     
     
     

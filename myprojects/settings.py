@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_jinja'
 ]
 
 MIDDLEWARE = [
@@ -107,7 +108,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+#Template Loaders 
+TEMPLATE_LOADERS = {
+    'django_jinja.loaders.AppLoader',
+    'django_jinja.loaders.FileSystemLoader',
+}
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
 
