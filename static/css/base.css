@@ -1,11 +1,10 @@
-body {
-    background-color: #105908;
+html,body {
+    background-color: #105908 !important;
     margin:0;
     padding:0;
     color: black;
     vertical-align:middle;
 }
-
 
 .main .form-sec form {
     margin-top:300px;
@@ -35,4 +34,12 @@ body {
     bottom: 0;
 
 
+}
+.main {
+    background-color:#105908; 
+    height: 100%;
+    width:100%;
+    padding: 0;
+    margin: 0;
+    
 }

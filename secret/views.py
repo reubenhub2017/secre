@@ -1,9 +1,18 @@
 from django.shortcuts import render
-from django.http import HttpResponse 
+from django.http import HttpResponse
+from django.conf import settings
+from django.shortcuts import redirect
 from django.template import loader 
 from .models import Post
+#from .forms import loginform
 
 
+from django.contrib.auth import (
+    authenticate,
+    get_user_model,
+    login,
+    #loginout,
+    ) 
 # Create your views here.
 def index(request):
     
@@ -11,8 +20,11 @@ def index(request):
     context = None
     return HttpResponse(template.render(context, request))
 
-def login(request):
-    return HttpResponse("<h1>login</h1>")
+def login_view(request):
+    form = UserLoginForm(request.POST or None)
+    if form.is_valid():
+        password = form.cleaned_data.get('password')
+    return render(request, "home.html")
 
 def home(request):
     all_posts = Post.objects.all()
@@ -22,3 +34,12 @@ def home(request):
     }
     return HttpResponse(template.render(context,request))
 
+def get_login(request):
+    if request.method=="POST":
+        form = loginform(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect('home.html')
+        else:
+            form = loginform()
+            return render(request,index.html,{'form': form})
+        
